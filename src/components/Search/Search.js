@@ -58,7 +58,7 @@ class Search extends Component {
     render() {
         // console.log(this.state.isChecked)
         return (
-            <div>
+            <div className="Features" >
                 <ol>
                <li> Field </li> 
                <li> Picnic Table </li> 

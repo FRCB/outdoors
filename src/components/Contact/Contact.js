@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Contact.css';
 
 class Contact extends Component {
     constructor() {
@@ -42,7 +43,8 @@ class Contact extends Component {
             <input value={text}
             placeholder = "Message"
             onChange={( e ) => this.updateText(e.target.value)}/>
-            <button onClick={this.createMessage}>Contact Us</button>
+            <button className="myButton" href="#"
+            onClick={this.createMessage}>Contact Us</button>
             </div>
         )
     }
