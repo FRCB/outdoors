@@ -4,6 +4,7 @@ import SearchIcon from 'react-icons/lib/md/search';
 import ArrowBackIcon from 'react-icons/lib/md/arrow-back';
 import FavoriteIcon from 'react-icons/lib/md/favorite-border';
 import InformationIcon from 'react-icons/lib/md/info-outline';
+// import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import './Playground.css'
 
 class Playground extends Component {
@@ -38,15 +39,20 @@ class Playground extends Component {
         return (
             <div className="Playgrounds Map">
                 {/* Navegation top left */}
-               <Link to='/search'> <SearchIcon  id="Search_icon"></SearchIcon></Link>
-               {/* Navegation top right */}
+                <Link to='/search'> <SearchIcon id="Search_icon"></SearchIcon></Link>
+                {/* Navegation top right */}
                 <Link to='/'> <ArrowBackIcon id="Arrow_Back"></ArrowBackIcon></Link>
                 {/* Footer bottom left */}
                 <Link to='/favorites'> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></Link>
                 {/* Footer bottom left */}
-               <Link to='/about'> <InformationIcon id="Information_icon"></InformationIcon></Link>
+                <Link to='/about'> <InformationIcon id="Information_icon"></InformationIcon></Link>
+
+                {/* <Map google={this.props.google} zoom={14}>
+                    <Marker onClick={this.onMarkerClick} name={'Current Location'} />
+                </Map> */}
             </div>
         )
     }
 }
 export default Playground;
+// export default GoogleApiWrapper({apiKey:(AIzaSyDi_ANtlUueF2com6-LYfFsyvE32hf59Ao)})(Playground)
