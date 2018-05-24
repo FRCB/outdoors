@@ -38,18 +38,19 @@ passport.use(new Auth0Strategy({
     clientID: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
     callbackURL: CALLBACK_URL,
-    scope: 'openid profile'
+    scope: 'openid profile email'
 }, (accessToken, refreshToken, extraParams, profile, done) => {
     let db = app.get('db');
     console.log(profile);
-    let { displayName, id } = profile;
+    let { displayName, picture, id,} = profile;
+    let email = profile.emails[0].value;
     db.find_user([id]).then((foundUser) => {
         if (foundUser[0]) {
             done(null, foundUser[0].id)
         } else {
-            db.create_user([displayName, id]).then((user) => {
+            db.create_user([displayName, picture,  id,email]).then((user) => {
                 done(null, user[0].id)
-            })
+            }).catch(console.log)
         }
     }).catch(console.log)
 }))
@@ -59,11 +60,11 @@ passport.serializeUser((id, done) => {
 passport.deserializeUser((id ,done) => {
     app.get('db').find_session_user( [id]).then((user) =>{
         done(null, user[0])
-    })
+    }).catch(console.log)
 })
 app.get('/login', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/playground'
+    successRedirect: 'http://localhost:3000/#/welcome'
 }))
 app.get('/auth/me', function(req, res) {
     if(req.user) {

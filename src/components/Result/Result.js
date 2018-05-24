@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from 'react-icons/lib/md/favorite-border';
 import DirectionsIcon from 'react-icons/lib/md/directions';
-import '/.Result.css';
+import ReviewsIcon from 'react-icons/lib/ti/message';
+import ThumbsUPIcon from 'react-icons/lib/ti/thumbs-up';
+import './Result.css';
 class Result extends Component{
     constructor(){
         super();
@@ -33,7 +35,7 @@ handleGetDirections(directions){
     render(){
         return(
             <div className="Name of Park">
-                <Link to='/reviews'> <RatingIcon id="Rating_icon"></RatingIcon></Link>
+                <Link to='/reviews'> <ThumbsUPIcon id="Rating_icon"></ThumbsUPIcon></Link>
                 <Link to='/reviews'> <ReviewsIcon id="Reviews_icon"></ReviewsIcon></Link>
                 <Link to='/favorites'> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></Link>
                 <Link to='/playground'> <DirectionsIcon id="Directons_icon"></DirectionsIcon></Link>
