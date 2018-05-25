@@ -1,10 +1,12 @@
-.about-outdoors{
+about-outdoors{
 font-size: 80px;
 font-family: 'Lucida Sans', 'Lucida Sans Regular';
 color: black;
 }
-.p{
-    font-size: 50px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular';
-    color: black;
+p{
+    font-family: "palatino linotype", palatino, serif;
+    font-size: 20px;
+    letter-spacing: 0.8pt;
+    word-spacing: 2.4pt;
+    
 }

@@ -9,7 +9,10 @@ class About extends Component {
         return (
             <div>
 
-                <div className ="About Outdoors!"/>
+                <div className="title">About Outdoors!</div>
+                <style>
+                    @import url('https://fonts.googleapis.com/css?family=Delius');
+                    </style>
                 <p>Outdoors! Is based in the united States and it was created due to
                     the fact that I love the outdoors and taking the kids to the parks.
                     The idea about creating an app that will have a list of playgrounds

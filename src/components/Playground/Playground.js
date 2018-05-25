@@ -36,7 +36,11 @@ class Playground extends Component {
 
     render() {
         return (
-            <div className="Playgrounds Map">
+            <div>
+                <div className="title">Playgrounds Map</div>
+                <style>
+                    @import url('https://fonts.googleapis.com/css?family=Delius');
+                    </style>
                 {/* Navegation top left */}
                 <Link to='/search'> <SearchIcon id="Search_icon"></SearchIcon></Link>
                 {/* Navegation top right */}
@@ -46,6 +50,7 @@ class Playground extends Component {
                 {/* Footer bottom left */}
                 <Link to='/about'> <InformationIcon id="Information_icon"></InformationIcon></Link>
             </div>
+
         )
     }
 }
