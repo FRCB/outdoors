@@ -4,6 +4,7 @@ import SearchIcon from 'react-icons/lib/md/search';
 import ArrowBackIcon from 'react-icons/lib/md/arrow-back';
 import FavoriteIcon from 'react-icons/lib/md/favorite-border';
 import InformationIcon from 'react-icons/lib/md/info-outline';
+
 import './Playground.css'
 
 class Playground extends Component {
