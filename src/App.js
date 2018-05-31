@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import routes from './routes';
-import { GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
+import { GoogleApiWrapper} from 'google-maps-react';
 import PlaygroundsMap from './components/Playground/PlaygroundsMap';
 
 

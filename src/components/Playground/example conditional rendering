@@ -1,0 +1,113 @@
+Export default class Demo extends Component{
+constructor(){
+super()
+this.state ={
+}
+}
+render(
+constStyleObj={}
+height:’50px’,
+Width:’50px,
+Background: ‘green’,
+
+)(
+return(
+<di>
+<div style={style obj}/>
+)
+}
+}
+
+this.state={
+    clicked: false,
+}
+<div className={ this.state.clicked ? 'show : ''}/>
+.show{
+    width: 50px;
+    height: 50px;
+    background: green;
+}
+
+const animals= this.state.data.map(animal => {
+    return(
+        <h2 key={ animal} className={this.state.clicked ? 'show : ''}>{animal}</h2>
+
+    )
+})
+.show{
+    color: blue;
+}
+<input className={'default${ this.state.clicked ? '' : 'hide'}`}/>
+
+.default{
+    width:500px,
+    box-shadow: 5px gray; 
+
+}
+
+let thing
+if(this.state.clicked) thing= <h2>first thing!</h2>
+else thing = <h2> second thing </h2>
+
+return 
+{thing}
+------->>>>>> end points------>>>>>
+app.get('/api/students', (req, res) => {
+ const db= req.app.get('db);
+});
+
+app.post('/api/students', (req, res) => {
+ const db= req.app.get('db);
+});
+
+// it will have to be wrap on an event handler... onClick event 
+
+axios.put( `/api/students/${student.id}', {
+    school_id: student.school_id,
+    first_name: student.first_name,
+    last_name: student.last_name,
+}). then(res =>{
+    let students = res.data;
+    update statethis.setState({ students });
+})
+
+//axios.put('/api/student/1'), {body} --- value comes from axios request
+id--- is the key 
+students/:id --- params
+app.put('/students/:id', (req,res) => {
+    const db= req.app.get('db);
+    let{id }= req.params;
+    let{
+        school_id,
+        first_name,
+        last_name
+    } = req.body;
+
+    //[id, school,first_name, last_name]
+    db.update_student([id, school,first_name, last_name])
+    .then(students => {
+        res.status(200).send(students);
+    })
+    .catch
+})
+
+
+INSERT INTO demo_students
+(school_id, first_name, last_name)
+VALUES
+(1, 'wanda', 'uzcategui')
+
+UPDATE demo_students
+SET
+school_id =1,
+first_name= 'wanda'
+last_name ='uzcategui'
+WHERE id = 1;
+
+SELECT * FROM demo_students;
+
+In Massive we need placeholders
+school_id = $2,
+first_name= $3,
+last_name = $4
+WHERE id = $1;
