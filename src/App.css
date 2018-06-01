@@ -1,49 +1,5 @@
-
-/* .background{
-  background-image: url('http://fungyung.com/data/out/65/63007928-leaf-wallpapers.jpg');
-} */
-
-
-
-
-
-
-
-
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico');
-
-body{
-  margin: 0;
-  background-color: azure;
-  width: 100%;
-  height: 100vh;
-}
-.header{
-width: 100%;
-height:100px;
-background-color: beige;
-text-align: center;
-justify-content: space-between;
-color:#29c72e;
-font-family:'Delius', cursive;
-}
-.main-content {
-  margin: 0 auto;
-  background-image: "http://bdfjade.com/data/out/52/5592544-kids-wallpapers.jpg";
-  height: 100vh;
-  width: 100%;
-}
-.footer{
-  background-color:white;
-  height:100px;
-  width: 100%;
-  margin: 0 auto;
-
-} */
-
-
-  /* ------------ responsive------------------ */
-	/* @media (max-width: 991px) {
+/* ------------ responsive------------------ */
+@media (max-width: 991px) {
   }
   
   @media (min-width: 768px) {
@@ -64,5 +20,4 @@ font-family:'Delius', cursive;
     }
     .content {
       max-width: 1040px;
-    } */
-  
+    } 

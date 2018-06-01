@@ -64,7 +64,7 @@ passport.deserializeUser((id ,done) => {
 })
 app.get('/login', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/welcome'
+    successRedirect: 'http://localhost:3003/#/'
 }))
 app.get('/auth/me', function(req, res) {
     if(req.user) {
@@ -75,7 +75,7 @@ app.get('/auth/me', function(req, res) {
 })
 app.get('/auth/logout', (req, res) => {
     req.logOut();
-    return res.redirect('http://localhost:3000/#/playground');
+    return res.redirect('http://localhost:3003/#/');
   })
 app.get('https://maps.googleapis.com/maps/api/streetview?location=41.403609,2.174448&size=456x456&key=AIzaSyDi_ANtlUueF2com6-LYfFsyvE32hf59Ao')
 app.post('api/playgrounds', playgrounds_controller.createPlayground);

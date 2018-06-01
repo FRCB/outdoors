@@ -8,7 +8,7 @@ class About extends Component {
             <div>
                 <body>
                     <div className="header">
-                        {/* <h1>Let's go Outdoors!</h1> */}
+                        <h1>Let's go Outdoors!</h1>
                     </div>
                     <style>
                         @import url('https://fonts.googleapis.com/css?family=Delius');
