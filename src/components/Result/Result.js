@@ -43,15 +43,24 @@ class Result extends Component {
     render() {
         return (
             <div>
-                <div className="content"></div>
-            <div className="title">Name of Playground</div>
-                <style>
-                    @import url('https://fonts.googleapis.com/css?family=Delius');
+                <body>
+                <div className="header">
+                    {/* <p> Name of Playground </p> */}
+                    <style>
+                        @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
-                <Link to='/reviews'> <ThumbsUPIcon id="Rating_icon"></ThumbsUPIcon></Link>
-                <Link to='/reviews'> <ReviewsIcon id="Reviews_icon"></ReviewsIcon></Link>
-                <Link to='/favorites'> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></Link>
-                <Link to='/playground'> <DirectionsIcon id="Directons_icon"></DirectionsIcon></Link>
+                    </div>
+
+                {/* <Link to='/favorites'><p> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></p></Link> */}
+                <div className="content">
+                    {/* <Link to='/playground'> <DirectionsIcon id="Directons_icon"></DirectionsIcon></Link> */}
+                </div>
+                <div className="footer">
+                    <Link to='/reviews'> <p><ThumbsUPIcon id="Rating_icon"></ThumbsUPIcon></p></Link>
+                    <Link to='/reviews'> <p><ReviewsIcon id="Reviews_icon"></ReviewsIcon></p></Link>
+                </div>
+                </body>
+
             </div>
         )
     }

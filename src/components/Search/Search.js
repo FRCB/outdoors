@@ -4,6 +4,7 @@ import Switch from 'react-toggle-switch';
 import SearchIcon from 'react-icons/lib/md/search';
 import ClearIcon from 'react-icons/lib/md/clear';
 import "../../../node_modules/react-toggle-switch/dist/css/switch.min.css";
+import PlaygroundsMap from '../Playground/PlaygroundsMap';
 import './Search.css'
 
 
@@ -84,6 +85,7 @@ class Search extends Component {
                     </ol>
 
                     <div>
+                    <PlaygroundsMap google={this.props.google} />
                         <input value={this.state.input}
                             placeholder="Address"
                             onChange={(e) => this.handleAddressChange(e.target.value)} type="text" />

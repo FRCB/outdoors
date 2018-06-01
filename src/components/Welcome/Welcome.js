@@ -1,28 +1,44 @@
 import React, { Component } from 'react';
-import './Welcome.css'
+import './Welcome.css';
 
 
 
 
 class Welcome extends Component {
+constructor(){
+    super();
+
+    this.state ={
+        enter: ''
+    };
+    this.handleEnter = this.handleEnter.bind(this);
+}
+handleEnter(){
+    this.setState({enter: ''})
+}
 
     render() {
         return (
-           <div className="Welcome">
-               <nav>
-               <section className="content">
-            <div className="title">Let's go Outdoors!</div>
-                <style>
-                    @import url('https://fonts.googleapis.com/css?family=Delius');
+            <div>
+                <body>
+                    <div className="header">
+                        <p>Let's go Outdoors!</p>
+                        <style>
+                        @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
+                    </div>
+                    <section className="content">
+                        <img src="http://savetreessaveearth.com/wp-content/uploads/2015/06/savetreesaveearth-img1.gif" alt="Tree" />
                     </section>
-                    <section className="container">
-                < img src="http://savetreessaveearth.com/wp-content/uploads/2015/06/savetreesaveearth-img1.gif" alt="Tree" />
-                </section>
-                </nav>
+                   <div className="footer">
+                   <button className="myButton" href="#"
+                    onClick={this.handleEnter}>Enter</button>
+                  
+                   </div>
+                </body>
             </div>
-    
-           
+
+
         )
     }
 }

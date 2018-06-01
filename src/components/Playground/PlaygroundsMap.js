@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import SearchBox from './SearchBox';
+// import SearchBox from './SearchBox';
 
 export default class PlaygroundsMap extends Component {
     // constructor(props) {
@@ -99,9 +99,9 @@ export default class PlaygroundsMap extends Component {
         return ( //in the return function we must return a div with ref='map' and style.
             <div ref="map" style={style}>
                 loading map...
-                <SearchBox
+                {/* <SearchBox
                 placeholder={""}
-                onPlacesChanged={this.handleSearch} />
+                onPlacesChanged={this.handleSearch} /> */}
             </div>
         )
     }
