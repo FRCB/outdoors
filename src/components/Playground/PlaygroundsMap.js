@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import { google } from 'google-maps-react';
 // import SearchBox from './SearchBox';
+
 
 export default class PlaygroundsMap extends Component {
     // constructor(props) {
@@ -34,7 +36,7 @@ export default class PlaygroundsMap extends Component {
         ]
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(){
         this.loadMap(); // call loapMap function to load the google map
     }
     // handleEvent(eventsName){
@@ -57,11 +59,13 @@ export default class PlaygroundsMap extends Component {
              //will configure a map depending on your location 
             // const { lat, lng } = this.state.currentLocation;
             // const center = new maps.LatLng(lat, lng);
-             // let {initialCenter, zoom } = this.props;
             // const{ lat, lng} = initialCenter;
+            // let {initialCenter, zoom } = this.props;
+           
+
             // const mapConfig = Object.assign({}, {
             //     center: center,
-            //     zoom: zoom,
+            //     zoom: 11,
             //     mapTypeId: 'roadmap'
             // })
 
@@ -82,7 +86,7 @@ export default class PlaygroundsMap extends Component {
 
                 });
             })
-            // const eventsName = ['click', 'mouseover']; // lets keep track of the names of the events we want to track with our Marker
+            const eventsName = ['click', 'mouseover']; // lets keep track of the names of the events we want to track with our Marker
 
         }
     }

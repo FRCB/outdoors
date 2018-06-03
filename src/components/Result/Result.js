@@ -57,7 +57,7 @@ class Result extends Component {
                 </div>
                 <div className="footer">
                     <Link to='/reviews'> <p><ThumbsUPIcon id="Rating_icon"></ThumbsUPIcon></p></Link>
-                    <Link to='/reviews'> <p><ReviewsIcon id="Reviews_icon"></ReviewsIcon></p></Link>
+                    <Link to='/contact'> <p><ReviewsIcon id="Reviews_icon"></ReviewsIcon></p></Link>
                 </div>
                 </body>
 
