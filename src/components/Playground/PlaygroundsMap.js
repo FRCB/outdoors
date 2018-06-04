@@ -1,112 +1,178 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { google } from 'google-maps-react';
-// import SearchBox from './SearchBox';
+import ReactDOM from 'react-dom'
+import Map, {Marker, GoogleApiWrapper} from 'google-maps-react'
+import styles from './Playground.css'
 
-
-export default class PlaygroundsMap extends Component {
-    // constructor(props) {
-    //     super(props);
-
-    //     const { lat, lng } = this.props.initialCenter;
-    //     this.state = {
-    //         currentLocation: {
-    //             lat: lat,
-    //             lng: lng
-    //         }
-    //     }
-    //     PlaygroundsMap.propTypes = {
-    //         google: React.PropTypes.object,
-    //         zoom: React.PropTypes.number,
-    //         initialCenter: React.propTypes.object
-    //     }
-    //     PlaygroundsMap.defaultProps = {
-    //         zoom:11,
-    //         initialCenter: { lat:40.233844, lng: -111.658534 },
-    //         mapTypeId: 'roadmap'
-                    
-    //     }
-    // }
-    playground = {
-        locations: [
-            { name: 'Harvest Park Playground', location: { lat: 40.400517, lng: -111.931699 } },
-            { name: 'Riverview Park', location: { lat: 40.294561, lng: -111.664955 } },
-            { name: 'Pioneer Park', location: { lat: 40.233059, lng: -111.668294 } },
-            { name: 'Memorial Park', location: { lat: 40.234194, lng: -111.644203 } }
-        ]
+class Contents extends Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      place: null,
+      position: null,
+      markers: []
     }
+    this.renderAutoComplete=this.renderAutoComplete.bind(this);
+  }
 
-    componentDidUpdate(){
-        this.loadMap(); // call loapMap function to load the google map
+  onSubmit(e) {
+    e.preventDefault();
+  }
+
+  componentDidMount() {
+    this.renderAutoComplete();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {map} = this.props;
+    if (map !== prevProps.map) {
+      this.renderAutoComplete();
     }
-    // handleEvent(eventsName){
-    //     return(e) => {
-    //         const eventsName = `on${ camelize(evt)}`
-    //         if( this.props[eventsName]){
-    //             this.props[eventsName](this.props, this.marker, e);
-    //         }
-    //     }
-    // }
+  }
 
-    loadMap() {
-        if (this.props && this.props.google) { // checks to make sure that props have been passed
-            const { google } = this.props; // sets props equal to google
-            const maps = google.maps; //sets maps to google maps props
+  renderAutoComplete() {
+    const {google, map} = this.props;
 
-            const mapRef = this.refs.map; //looks for HTML div ref 'map'.Returned in render below.
-            const node = ReactDom.findDOMNode(mapRef); // finds the 'map' div in the React Dom, names it node
-            
-             //will configure a map depending on your location 
-            // const { lat, lng } = this.state.currentLocation;
-            // const center = new maps.LatLng(lat, lng);
-            // const{ lat, lng} = initialCenter;
-            // let {initialCenter, zoom } = this.props;
-           
+    if (!google || !map) return;
 
-            // const mapConfig = Object.assign({}, {
-            //     center: center,
-            //     zoom: 11,
-            //     mapTypeId: 'roadmap'
-            // })
+    const aref = this.refs.autocomplete;
+    const node = ReactDOM.findDOMNode(aref);
+    var autocomplete = new google.maps.places.Autocomplete(node);
+    autocomplete.bindTo('bounds', map);
+    
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
 
-            //Hardcode mapConfig
-            const mapConfig = Object.assign( {}, {
-                center: { lat:40.233844, lng: -111.658534 }, //sets center of google map to Provo, Utah
-                zoom: 11,// sets zoom. Lower numbers are zoomed further out.
-                mapTypeId: 'roadmap' // optional main map layer.. Terrain, satellite, hybrid or roadmap -if unspecified, defaults to roadmap.
-            })
-            this.map = new maps.Map(node, mapConfig); // creates a new Google map on the specified node( ref= 'map') with the specified configuration set above.
-
-            //ADD MARKERS TO MAP
-            this.playground.locations.forEach(location => { //iterate through locations saved in state
-                const marker = new google.maps.Marker({ // creates a new Google maps Marker object.
-                    position: { lat: location.location.lat, lng: location.location.lng }, // sets position of marker to specified location
-                    map: this.map, //sets markers to appear on the map we just created on line 29
-                    title: location.name // the title of the marker is set to the name of the location
-
-                });
-            })
-            const eventsName = ['click', 'mouseover']; // lets keep track of the names of the events we want to track with our Marker
-
+    console.log(map);
+    console.log(google.maps.ControlPosition)
+   
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    map.addListener('bounds_changed', function(){
+      searchBox.setBounds(map.getBounds())
+    });
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+  
+      if (places.length == 0) {
+        return;
+      }
+      let markers = this.state.markers;
+      // Clear out the old markers.
+      markers.forEach(function(marker) {
+        marker.setMap(null);
+      });
+      
+  
+      // For each place, get the icon, name and location.
+      var bounds = new google.maps.LatLngBounds();
+      places.forEach((place) =>{
+        if (!place.geometry) {
+          console.log("Returned place contains no geometry");
+          return;
         }
-    }
-    render() {
-        const style = { // Must specify dimensions of the Google map or it will not work. Also works best when style is specified inside the render function and created as an object
-            width: '90vw',// 90vw basically means take up 90% of the width screen, px also works.
-            height: '75vh' // 75vh similarly will take up roughly 75% of the height of the scree, px also works.
+        var icon = {
+          url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(25, 25)
+        };
+  
+        // Create a marker for each place.
+        markers.push(new google.maps.Marker({
+          map: map,
+          icon: icon,
+          title: place.name,
+          position: place.geometry.location
+        }));
+  this.setState({ markers})
+        if (place.geometry.viewport) {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
         }
-        // this.marker = new google.maps.marker(pref);
-        // eventsName.forEach( e => {
-        //     this.marker.addListener(e, this.handleEvent(e));
-        // })
+      });
+      map.fitBounds(bounds);
+    });
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (!place.geometry) {
+        return;
+      }
 
-        return ( //in the return function we must return a div with ref='map' and style.
-            <div ref="map" style={style}>
-                loading map...
-                {/* <SearchBox
-                placeholder={""}
-                onPlacesChanged={this.handleSearch} /> */}
-            </div>
-        )
-    }
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+      }
+
+      this.setState({
+        place: place,
+        position: place.geometry.location
+      })
+    })
+  }
+
+  render() {
+    console.log(this.props)
+    const props = this.props;
+    const {position} = this.state;
+
+    return (
+      <div className={styles.flexWrapper}>
+        <div className={styles.left}>
+          <form onSubmit={this.onSubmit}>
+            <input
+             id="pac-input"
+              ref='autocomplete'
+              type="text"
+              placeholder="Enter a location" />
+            <input
+              className={styles.button}
+              type='submit'
+              value='Go' />
+          </form>
+          <div>
+            <div>Lat: {position && position.lat()}</div>
+            <div>Lng: {position && position.lng()}</div>
+          </div>
+        </div>
+        <div className={styles.right}>
+          <Map {...props}
+              containerStyle={{
+                position: 'relative',
+                height: '100vh',
+                width: '100%'
+              }}
+              center={this.state.position}
+              centerAroundCurrentLocation={false}>
+                <Marker position={this.state.position} />
+          </Map>
+        </div>
+      </div>
+    )
+  }
 }
+class MapWrapper extends Component{
+  render() {
+    const props = this.props;
+    const {google} = this.props;
+    console.log(props)
+
+    return (
+      <Map google={google}
+          className={'map'}
+          visible={false}>
+            <Contents {...props} />
+      </Map>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: process.env.REACT_AIzaSyAJ8Z_tVyX3KNsEL2vyYrpWv3uyBKjgejw,
+  // libraries: places
+})(MapWrapper)
+
+// export default GoogleApiWrapper({ apikey: 'AIzaSyAJ8Z_tVyX3KNsEL2vyYrpWv3uyBKjgejw'})(App);

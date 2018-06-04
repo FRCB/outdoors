@@ -11,7 +11,7 @@ import PlaygroundsMap from './PlaygroundsMap';
 import './Playground.css'
 
 const Title = styled.h1`
-position: aboslute;
+position: absolute;
 top: 100px;
 font-size: 90px;
 text-align:center;
@@ -51,51 +51,30 @@ class Playground extends Component {
 
     render() {
         return (
-            <div>
-            <PlaygroundsMap google={this.props.google} />
+            <div className="header">
+            <PlaygroundsMap />
                 <Title>Playgrounds Map</Title>
                 <style>
                     @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
-                {/* Navegation top left */}
+                    <div className="top-left">
+                {/*------ Top Left----*/}
                 <Link to='/search'> <SearchIcon id="Search_icon"></SearchIcon></Link>
-                {/* Navegation top right */}
+                </div>
+                <div className="top-rigth">
+                {/*-----Top Right-------*/}
                 <Link to='/'> <ArrowBackIcon id="Arrow_Back"></ArrowBackIcon></Link>
-                {/* Footer bottom left */}
+                </div>
+                <div className="bottom">
+                {/*--------Bottom left -----*/}
                 <Link to='/favorites'> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></Link>
-                {/* Footer bottom left */}
-                <Link to='/about'> <InformationIcon id="Information_icon"></InformationIcon></Link>
-                 <PlaygroundsMap google={this.props.google} />
+                { /*-------- Bottom right ------*/}
+                <Link to='/facts'> <InformationIcon id="Information_icon"></InformationIcon></Link>
+                {/* <input id="pac-input" class="controls" type="text" placeholder="Search Box" /> */}
+                </div>
             </div>
 
         )
     }
 }
-export default GoogleApiWrapper({ apikey: 'AIzaSyAcCRT99pvtkGrVDMWKRwrFJQC94OITMGw',  libraries: ['places'] })(Playground);
-/* 
-.Search__parent {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin: 0px 10px;
-  }
-  
-  .Search__parent input {
-    border-radius: 21px;
-    border: 1px solid #2aabe2;
-    outline: none;
-    padding: 9px 34px 8px 12px;
-    font-size: 12px;
-  }
-  
-  .Search__content {
-    position: relative;
-  }
-  
-  #Search__icon {
-    font-size: 20px;
-    position: absolute;
-    top: 6px;
-    right: 12px;
-    cursor: pointer;
-  } */
+export default GoogleApiWrapper({ apikey: 'AIzaSyBBImf1N2mgdkR0oqyKQSEbSjmJrAfiRrg',  libraries: ['places'] })(Playground);

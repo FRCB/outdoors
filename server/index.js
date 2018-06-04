@@ -77,7 +77,7 @@ app.get('/auth/logout', (req, res) => {
     req.logOut();
     return res.redirect('http://localhost:3003/#/');
   })
-app.get('https://maps.googleapis.com/maps/api/streetview?location=41.403609,2.174448&size=456x456&key=AIzaSyDi_ANtlUueF2com6-LYfFsyvE32hf59Ao')
+app.get('https://maps.googleapis.com/maps/api/streetview?key=AIzaSyBBImf1N2mgdkR0oqyKQSEbSjmJrAfiRrg')
 app.post('api/playgrounds', playgrounds_controller.createPlayground);
 app.get('api/playgrounds', playgrounds_controller.getPlayground);
 app.get('api/playgrounds', playgrounds_controller.getPlaygrounds);

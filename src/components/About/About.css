@@ -1,0 +1,40 @@
+.content{
+    width:10em;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+img{
+
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 40%;
+
+}
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+ 
+}
+
+/* Clearfix (clear floats) */
+.row {
+
+    display: flex;
+
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+    .column {
+        width: 100%;
+    }
+}

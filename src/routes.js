@@ -7,6 +7,7 @@ import About from './components/About/About';
 import Favorites from './components/Favorites/Favorites';
 import Result from './components/Result/Result';
 import Contact from './components/Contact/Contact';
+import Facts from './components/Facts/Facts';
 
 export default (
     <Switch>
@@ -17,7 +18,7 @@ export default (
         <Route path='/favorites' component={Favorites} />
         <Route path='/about' component={About} />
         <Route path='/contact' component={ Contact } />
-
+        <Route path='/facts' component={Facts}/>
 
     </Switch>
 )

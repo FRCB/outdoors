@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import './About.css';
 
 const Title = styled.h1`
-position: aboslute;
+position: fixed;
 top: 100px;
 font-size: 90px;
 text-align:center;
@@ -12,70 +12,54 @@ font-family:'Delius', cursive;
 padding-bottom: 25%;
 
 `;
+const P = styled.h4`
+margin: auto;
+width: 50%;
+padding: 10px;
+font-size: 80px;
+text-align: center;
+color: black;
+font-family: 'Roboto Condensed', sans-serif;
 
+`
 class About extends Component {
 
     render() {
         return (
             <div>
-                <Title> About Us </Title>
-
-                <style>
-                    @import url('https://fonts.googleapis.com/css?family=Delius');
+                <div className="header">
+                    <Title> About Us </Title>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
-                <section className="context">
-                    <div>Outdoors! Is based in the united States and it was created due to
-                        the fact that I love the outdoors and taking the kids to the parks.
-                        The idea about creating an app that will have a list of playgrounds
-                        and its features came to me while  I was working as a nanny.
-                        I will spend a considerable amount of time looking at the map on my
-                         phone trying to find new parks to take the kids to. Once yelp came out,
-                         I used to search there as well for reviews and comments about the playgrounds
-                         in our area. After, lots of years of searching and getting to know the local
-                         playgrounds, I created a list of my favorites and I sent it to friends with
-                         kids and other nannies. However, once I moved I realized that I needed to start
-                         again, and the need to create the app became more evident.
-                </div>
-                </section>
+                    </div>
+                    <div className="content">
+                    <p>   Hi! I am Wanda Uzcategui and I Welcome you once more to Let's go Outdoors!
+                        Let's go Outdoors was born from an idea that I had years ago while working with children.
+                         I used to spent a lot of time looking at maps and searching for new places to take the kids out and I realized that we always visited the same playgrounds.
+                        Since, I believe in the power of playing and spending time outdoors and also of visiting new places and getting involve with the community. I created a spreadsheet with the most outstaings playgrounds in the city, this list had details from how
+                         stroller accesible the playground was to bathroom facilities and activities that took places there.
+                    </p>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+</style>
 
+                </div>
+
+                <div className="row">
+                    <div className="column"><img src="https://i.pinimg.com/736x/a7/d6/a5/a7d6a5db41b6c82527ae4ee19021733c--plays-kid.jpg" alt="Play Empowers" style={{ width: 300, heigth: 300 }} /></div> 
+                    <div className="column"><img src="https://i.pinimg.com/564x/21/b2/d5/21b2d5f841babae6f8a1de887d081b75.jpg" alt="Play Enriches" style={{ width: 300, heigth: 300 }} /> </div> 
+                    <div className="column"><img src="https://i.pinimg.com/564x/f6/b1/bc/f6b1bc0da63ca0d470b38ce3b2ece604.jpg" alt="Play Builds" style={{ width: 300, heigth: 300 }} /> </div>
+                </div>
             </div>
+
+
+
+
+
+
 
         )
     }
 }
-
 export default About;
-
-/* .header{
-    top: 20%;
-    width:100%;
-    height: 20vh;
-    padding-left: 25%;
-    padding-right: 25%;
-    margin-left: 50%;
-    margin-right: 50%; 
-
-}
-h1{
-    position: absolute;
-    top: 50px;
-    font-size: 90px;
-    text-align:left;
-    justify-content: flex-start;
-    align-content: stretch;
-    flex-wrap: nowrap;
-    color:#29c72e;
-    font-family:'Delius', cursive;
-}
-.context{
-    margin: 0 auto;
-    width: 100vw;
-    height: 300px;
-    padding-left: 80px;
-} 
-div{
-   font-size: 50px;
-   text-align: center;
-   color: black;
-   font-family: 'Lucida Sans', 'Lucida Sans Regular'; 
-}  */

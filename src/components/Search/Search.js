@@ -5,8 +5,19 @@ import SearchIcon from 'react-icons/lib/md/search';
 import ClearIcon from 'react-icons/lib/md/clear';
 import "../../../node_modules/react-toggle-switch/dist/css/switch.min.css";
 import PlaygroundsMap from '../Playground/PlaygroundsMap';
+import styled from 'styled-components';
 import './Search.css'
 
+const Title = styled.h1`
+position: absolute;
+top: 100px;
+font-size: 80px;
+text-align:center;
+color:#29c72e;
+font-family:'Delius', cursive;
+padding-bottom: 25%;
+
+`;
 
 class Search extends Component {
     constructor() {
@@ -60,10 +71,12 @@ class Search extends Component {
         // console.log(this.state.isChecked)
         return (
             <div>
-                <div className="title"> Playgrounds Search </div>
+                <div className="header">
+                <Title> Playgrounds Search </Title>
                 <style>
                     @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
+                    </div>
                 <div className="Features" >
                     <ol>
                         <li> Field </li>

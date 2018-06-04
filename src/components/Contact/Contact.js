@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import './Contact.css';
 
 const Title = styled.h1`
-top: 50px;
+position: relative;
 font-size: 90px;
 text-align:center;
 color:#29c72e;
