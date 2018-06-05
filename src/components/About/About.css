@@ -5,12 +5,10 @@
     justify-content:center;
 }
 
-
-
 * {
     box-sizing: border-box;
 }
-img{
+picture{
 
 display: block;
 margin-left: auto;

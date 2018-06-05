@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { render } from 'react-dom';
 import './Facts.css'
 
 const Title = styled.h1`
 position: absolute;
 top: 100px;
-font-size: 90px;
+font-size: 50px;
 text-align:center;
 color:#29c72e;
 font-family:'Delius', cursive;
 padding-bottom: 25%;
 
+`;
+
+const Subtitle = styled.h6`
+position: absolute;
+top: 100px;
+font-size: 20px;
+text-align:center;
+color:black;
+font-family:'Delius', cursive;
+padding-bottom: 25%;
 `;
  
 class Facts extends Component {
@@ -24,7 +35,8 @@ class Facts extends Component {
                     @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
                 </div>
-                <div className="Benefits" >
+                <div className="info">
+                <Subtitle>
                     <ol>
                         <li> Research as far back as 1885 proves that learners fare better when breaks are incorporated into their efforts. </li>
                         <li>  Albert Einstein said that, “Play is the highest form of research.” </li>
@@ -39,6 +51,7 @@ class Facts extends Component {
                         <li> Playgrounds, as you now see, are more than just areas where kids can be kept busy or "go run around outside" for a while. They are a major part of development, and should be seen as vital to the community.</li>   
             
                     </ol>
+                    </Subtitle>
                     </div>
                     <p>For more information please visit: https://www.aaastateofplay.com/77-reasons-kids-need-playgrounds/</p>
                     </div>

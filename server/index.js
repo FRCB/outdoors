@@ -6,6 +6,7 @@ const session = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const playgrounds_controller = require('./playgrounds_controller');
+const reviews_controller = require('./reviews_controller');
 
 const app = express();
 // app.use( express.static( `${__dirname}/../build` ) );
@@ -64,7 +65,7 @@ passport.deserializeUser((id ,done) => {
 })
 app.get('/login', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3003/#/'
+    successRedirect: 'http://localhost:3000/#/playground'
 }))
 app.get('/auth/me', function(req, res) {
     if(req.user) {
@@ -83,6 +84,13 @@ app.get('api/playgrounds', playgrounds_controller.getPlayground);
 app.get('api/playgrounds', playgrounds_controller.getPlaygrounds);
 app.put('api/playgrounds/:id', playgrounds_controller.updatePlayground);
 app.delete('api/playgrounds/:id', playgrounds_controller.deletePlayground);
+
+
+app.post('api/reviews', reviews_controller.createReviews);
+app.get('api/reviews', reviews_controller.getReview);
+app.get('api/reviews', reviews_controller.getReviews);
+app.put('api/reviews/:id', reviews_controller.updateReview);
+app.delete('api/reviews/:id', reviews_controller.deleteReview);
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`Lets go Outdoors!! ${port}`))
