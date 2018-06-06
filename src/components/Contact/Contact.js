@@ -43,7 +43,7 @@ class Contact extends Component {
                     <form action="/action_page.php">
                         <div className='row'>
                             <div className="col-25">
-                                <label htmlFor="fullName">Full Name</label>
+                                <label htmlFor="fullName"><strong>Full Name</strong></label>
                             </div>
                             <div className="col-75">
                                 <input onChange={ ( e ) => this.handleNameChange(e.target.value)}
@@ -53,7 +53,7 @@ class Contact extends Component {
                         </div>
                         <div className="row">
                             <div className="col-25">
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="email"><strong>Email</strong></label>
                             </div>
                             <div className="col-75">
                                 <input onChange={ ( e ) => this.handleEmailChange(e.target.value)}
@@ -63,7 +63,7 @@ class Contact extends Component {
                         </div>
                         <div className="row">
                             <div className="col-25">
-                                <label htmlFor="message">Message</label>
+                                <label htmlFor="message"><strong>Message</strong></label>
                             </div>
                             <div className="col-75">
                                 <textarea id='subject' name="subject"

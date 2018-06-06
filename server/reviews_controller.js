@@ -1,7 +1,7 @@
 module.exports = {
     createReviews: (req, res, next) => {
         const dbInstance = req.app.get('db');
-        const { id, playground_id, reviewer_name, rating, content} = req.body;
+        const { playground_id, reviewer_name, rating, content} = req.body;
         // reviews = { id: reviews[reviews.length - 1].d + 1 }
 
         //reviews.push(playgrounds);
@@ -18,7 +18,7 @@ module.exports = {
         .then( playground => res.status(200).send(playground))
         .catch( () => res.status(500).send());
     },
-    getReviews: (res, req, next ) => {
+    getReviews: (req, res, next ) => {
         const dbInstance = req.app.get('db');
 
         dbInstance.read_reviews()
@@ -33,6 +33,13 @@ module.exports = {
 
         // const reviewIndex = reviews.findIndex(review => review.id == updateId);
         // review[reviewsIndex] = { id: review.id || review };
+
+
+        reviews [reviewsIndex] = {
+            id: review.id,
+            content: content || review.content,
+            
+        };
 
         dbInstance.update_review([params.id, query.desc ])
         .then( () => res.status(200).send())

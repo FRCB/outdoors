@@ -78,19 +78,19 @@ app.get('/auth/logout', (req, res) => {
     req.logOut();
     return res.redirect('http://localhost:3003/#/');
   })
-app.get('https://maps.googleapis.com/maps/api/streetview?key=AIzaSyBBImf1N2mgdkR0oqyKQSEbSjmJrAfiRrg')
-app.post('api/playgrounds', playgrounds_controller.createPlayground);
-app.get('api/playgrounds', playgrounds_controller.getPlayground);
-app.get('api/playgrounds', playgrounds_controller.getPlaygrounds);
-app.put('api/playgrounds/:id', playgrounds_controller.updatePlayground);
-app.delete('api/playgrounds/:id', playgrounds_controller.deletePlayground);
+
+app.post('/api/playgrounds', playgrounds_controller.createPlayground);
+app.get('/api/playgrounds/:id', playgrounds_controller.getPlayground);
+app.get('/api/playgrounds', playgrounds_controller.getPlaygrounds);
+app.put('/api/playgrounds/:id', playgrounds_controller.updatePlayground);
+app.delete('/api/playgrounds/:id', playgrounds_controller.deletePlayground);
 
 
 app.post('api/reviews', reviews_controller.createReviews);
-app.get('api/reviews', reviews_controller.getReview);
-app.get('api/reviews', reviews_controller.getReviews);
-app.put('api/reviews/:id', reviews_controller.updateReview);
-app.delete('api/reviews/:id', reviews_controller.deleteReview);
+app.get('/api/reviews/:id', reviews_controller.getReview);
+app.get('/api/reviews', reviews_controller.getReviews);
+app.put('/api/reviews/:id', reviews_controller.updateReview);
+app.delete('/api/reviews/:id', reviews_controller.deleteReview);
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`Lets go Outdoors!! ${port}`))

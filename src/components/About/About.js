@@ -22,7 +22,7 @@ color: black;
 font-family: 'Roboto Condensed', sans-serif;
 
 `
-class About extends Component {
+export default class About extends Component {
 
     render() {
         return (
@@ -62,4 +62,3 @@ class About extends Component {
         )
     }
 }
-export default About;

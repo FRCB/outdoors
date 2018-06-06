@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchIcon from 'react-icons/lib/md/search';
 import ArrowBackIcon from 'react-icons/lib/md/arrow-back';
@@ -6,7 +7,8 @@ import FavoriteIcon from 'react-icons/lib/md/favorite-border';
 import InformationIcon from 'react-icons/lib/md/info-outline';
 import { GoogleApiWrapper } from 'google-maps-react';
 import styled from 'styled-components';
-import PlaygroundsMap from './PlaygroundsMap';
+import Playgrounds from './Playgrounds';
+
 
 import './Playground.css'
 
@@ -30,6 +32,7 @@ class Playground extends Component {
             previousPage: '',
             favorites: '',
             information: '',
+            playground: {}
         };
         this.handleSearch = this.handleSearch.bind(this);
         this.handlePreviousPage = this.handlePreviousPage.bind(this);
@@ -49,32 +52,49 @@ class Playground extends Component {
         this.setState({ information: information })
     }
 
+    componentDidMount() {
+        let { id } = this.props.match.params;
+        axios.get('/api/playgrounds/:id').then(result => {
+            this.setState({ playground: result.data });
+        }).catch((err) => console.log('could not get playground', err));
+    }
+   
     render() {
+        console.log(this.state.playground);
         return (
             <div className="header">
-            <PlaygroundsMap />
-                <Title>Playgrounds Map</Title>
+
+                <Title>{ this.state.playground.name} </Title>
                 <style>
                     @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
-                    <div className="top-left">
-                {/*------ Top Left----*/}
-                <Link to='/search'> <SearchIcon id="Search_icon"></SearchIcon></Link>
+
+                <div className="playgrounds_content">
+                    <image_url style={{ width: '500px' }} src={this.state.playground.image_url} />
+                    <h3>{`Address: ${this.state.playground.address}`}</h3>
+                    <h3>{`City: ${this.state.playground.city}`}</h3>
+                    <h2>{`State: ${this.state.playground.state}`}</h2>
+                    <h2>{`Zip: ${this.state.playground.zip}`}</h2>
+                    <h2>{`Reviews: ${this.state.playground.reviews}`}</h2>
+                    {/* {this.renderPlayground()} */}
                 </div>
+
+                <div className="top-left">
+                    <Link to='/search'> <SearchIcon id="Search_icon"></SearchIcon></Link>
+                </div>
+
                 <div className="top-rigth">
-                {/*-----Top Right-------*/}
-                <Link to='/'> <ArrowBackIcon id="Arrow_Back"></ArrowBackIcon></Link>
+                    <Link to='/'> <ArrowBackIcon id="Arrow_Back"></ArrowBackIcon></Link>
                 </div>
+
                 <div className="bottom">
-                {/*--------Bottom left -----*/}
-                <Link to='/favorites'> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></Link>
-                { /*-------- Bottom right ------*/}
-                <Link to='/facts'> <InformationIcon id="Information_icon"></InformationIcon></Link>
-                {/* <input id="pac-input" class="controls" type="text" placeholder="Search Box" /> */}
+                    <Link to='/favorites'> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></Link>
+                    <Link to='/facts'> <InformationIcon id="Information_icon"></InformationIcon></Link>
+
                 </div>
             </div>
 
         )
     }
 }
-export default GoogleApiWrapper({ apikey: 'AIzaSyBBImf1N2mgdkR0oqyKQSEbSjmJrAfiRrg',  libraries: ['places'] })(Playground);
+export default Playground;

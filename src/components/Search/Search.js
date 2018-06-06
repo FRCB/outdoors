@@ -28,23 +28,7 @@ class Search extends Component {
             switched: false,
             search: '',
             clear: '',
-            features: [
-                'Field',
-                'Picnic Table',
-                'Sand',
-                'Swing',
-                'Bathroom with Changing Tables',
-                'Water Fountain',
-                'Wood Chips',
-                'Rubber floors',
-                'Park Bench',
-                'Play Structure',
-                'Slide',
-                'Toddler Swing',
-                'Water Park',
-                'Parking',
-                'Wheel Chair Accessible'
-            ]
+
         };
         this.handleAddressChange = this.handleAddressChange.bind(this);
         this.handlePlaygroundNameChange = this.handlePlaygroundNameChange.bind(this);
@@ -72,33 +56,15 @@ class Search extends Component {
         return (
             <div>
                 <div className="header">
-                <Title> Playgrounds Search </Title>
-                <style>
-                    @import url('https://fonts.googleapis.com/css?family=Delius');
+                    <Title> Playgrounds Search </Title>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
-                    </div>
-                <div className="Features" >
-                    <ol>
-                        <li> Field </li>
-                        <li> Picnic Table </li>
-                        <li> Sand </li>
-                        <li> Swing </li>
-                        <li> Field </li>
-                        <li> Bathroom with Changing Tables </li>
-                        <li> Water Fountain </li>
-                        <li> Wood Chips </li>
-                        <li> Rubber floors </li>
-                        <li> Park Bench </li>
-                        <li> Play Structure </li>
-                        <li> Slide </li>
-                        <li> Toddler Swing </li>
-                        <li> Water Park </li>
-                        <li> Parking </li>
-                        <li> Wheel Chair Accessible </li>
-                    </ol>
+                </div>
 
+                <div className="search_content">
                     <div>
-                    <PlaygroundsMap google={this.props.google} />
+                        {/* <PlaygroundsMap google={this.props.google} /> */}
                         <input value={this.state.input}
                             placeholder="Address"
                             onChange={(e) => this.handleAddressChange(e.target.value)} type="text" />
@@ -108,6 +74,7 @@ class Search extends Component {
                         <Switch onClick={this.toggleSwitch} on={this.state.switched} />
                         <Link to='/result'> <SearchIcon id="Search_icon"></SearchIcon></Link>
                         <Link to='/search'> <ClearIcon id="Search_icon"></ClearIcon></Link>
+
                     </div>
                 </div>
             </div>
