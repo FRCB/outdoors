@@ -1,2 +1,2 @@
 SELECT * FROM Playgrounds 
-WHERE Playgrounds_id = $1;
+WHERE Id = $1;

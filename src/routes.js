@@ -24,7 +24,7 @@ export default (
         <Route path='/contact' component={ Contact } />
         <Route path='/facts' component={Facts}/>
         <Route path='/reviews' component={ Reviews }/>
-        <Route path='/playgrounds/:id'component={ Playground } />
+        <Route path='/playground/:id'component={ Playground } />
 
     </Switch>
 )

@@ -9,11 +9,22 @@ class Reviews extends Component {
         super();
 
         this.state = {
-            reviews: []
+            reviews: [],
+            input:''
         };
         this.createReview = this.createReview.bind(this);
         this.updateReview = this.updateReview.bind(this);
         this.deleteReview = this.deleteReview.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+    }
+    handleInputChange(value){
+        this.setState({ input: value });
+    }
+    handleAdd(){
+        this.props.add(this.state.input);
+        this.setState({ input: ''})
     }
     componentDidUpdate() {
         axios.get('/api/reviews').then(results => {
@@ -54,6 +65,7 @@ class Reviews extends Component {
                             deleteReviewFn = { this.deleteReview }/>
                     ))
                 }
+                <button onClick={ this.handleAdd}>Add Review </button>
             </section>
             </div>
         );

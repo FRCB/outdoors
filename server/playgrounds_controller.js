@@ -13,10 +13,13 @@ module.exports = {
     getPlayground: (req, res, next) => {
         const dbInstance = req.app.get('db');
         const { params } = req;
-       
+       console.log(req.params);
         dbInstance.read_playground([ req.params.id, req.query.desc ])
-        .then( playground => res.status(200).send(playground))
-        .catch( () => res.status(500).send());
+        .then( playground => res.status(200).send(playground[0]))
+        .catch( (error) => { 
+            console.log(error);
+             res.status(500).send()}
+            );
     },
     getPlaygrounds: (req, res, next ) => {
         const dbInstance = req.app.get('db');

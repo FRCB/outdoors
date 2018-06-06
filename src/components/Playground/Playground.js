@@ -54,7 +54,7 @@ class Playground extends Component {
 
     componentDidMount() {
         let { id } = this.props.match.params;
-        axios.get('/api/playgrounds/:id').then(result => {
+        axios.get(`/api/playgrounds/${id}`).then(result => {
             this.setState({ playground: result.data });
         }).catch((err) => console.log('could not get playground', err));
     }
