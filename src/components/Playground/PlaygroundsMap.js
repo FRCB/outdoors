@@ -114,6 +114,6 @@ class MapWrapper extends Component{
 }
 
 export default GoogleApiWrapper({
-  apiKey: process.env.AIzaSyAJ8Z_tVyX3KNsEL2vyYrpWv3uyBKjgejw,
+  
 })(MapWrapper)
 
