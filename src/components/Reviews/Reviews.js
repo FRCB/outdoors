@@ -26,6 +26,9 @@ class Reviews extends Component {
         this.props.add(this.state.input);
         this.setState({ input: ''})
     }
+    deleteReview(){
+        Reviews.remove(this.props.review.id);
+    }
     componentDidUpdate() {
         axios.get('/api/reviews').then(results => {
             this.setState({ reviews: results.data });
@@ -36,10 +39,10 @@ class Reviews extends Component {
             this.setState({ reviews: results.data });
         }).catch((err) => console.log('could not create a review', err));
     }
-    updateReview(id, text) {
-        axios.put('/api/reviews?id=${ id }', { text }).then(results => {
-            this.setState({ reviews: results.data });
-        }).catch((err) => console.log('could not update the review', err));
+    updateReview([ playground_id, reviewer_name, rating, content]) {
+        axios.put('/api/reviews?id=${ id }', {playground_id},{reviewer_name}, {rating},{content}).then(results => 
+               { this.setState({playground_id: results.data}),({ reviewer_name: results.data }),({ rating: results.data }), ({content: results.data })
+               }).catch((err) => console.log('could not update the review', err));
     }
     deleteReview(id) {
         axios.delete('/api/reviews?id={ id}').then(results => {
@@ -60,12 +63,13 @@ class Reviews extends Component {
                     reviews.map(review => (
                     <Update_Reviews key={ review.id}
                             id={ review.text}
-                            date={ review.date}
                             updateReviewFn = { this.updateReview }
                             deleteReviewFn = { this.deleteReview }/>
                     ))
                 }
                 <button onClick={ this.handleAdd}>Add Review </button>
+                <button onClick={ this.deleteReview}>Delete</button>
+                <button onClick={ this.updateReview}>Update</button>
             </section>
             </div>
         );

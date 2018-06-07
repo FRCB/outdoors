@@ -54,7 +54,7 @@ class Playgrounds extends Component{
                   <style>
                 @import url('https://fonts.googleapis.com/css?family=Delius');
                 </style>
-                <div className="playgrounds_content">
+                <div className="box">
                   {this.renderPlaygrounds()}
                   </div>
 

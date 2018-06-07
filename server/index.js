@@ -7,9 +7,12 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const playgrounds_controller = require('./playgrounds_controller');
 const reviews_controller = require('./reviews_controller');
+const path = require('path');
 
 const app = express();
-// app.use( express.static( `${__dirname}/../build` ) );
+
+app.use( express.static( `${__dirname}/../build` ) );
+
 const {
     SERVER_PORT,
     SESSION_SECRET,
@@ -65,7 +68,7 @@ passport.deserializeUser((id ,done) => {
 })
 app.get('/login', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/playground'
+    successRedirect: process.env.SUCCESS_REDIRECT
 }))
 app.get('/auth/me', function(req, res) {
     if(req.user) {
@@ -76,7 +79,7 @@ app.get('/auth/me', function(req, res) {
 })
 app.get('/auth/logout', (req, res) => {
     req.logOut();
-    return res.redirect('http://localhost:3003/#/');
+    return res.redirect(process.env.SUCCESS_REDIRECT);
   })
 
 app.post('/api/playgrounds', playgrounds_controller.createPlayground);
@@ -91,6 +94,11 @@ app.get('/api/reviews/:id', reviews_controller.getReview);
 app.get('/api/reviews', reviews_controller.getReviews);
 app.put('/api/reviews/:id', reviews_controller.updateReview);
 app.delete('/api/reviews/:id', reviews_controller.deleteReview);
+
+
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => console.log(`Lets go Outdoors!! ${port}`))

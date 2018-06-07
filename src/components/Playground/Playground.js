@@ -70,13 +70,14 @@ class Playground extends Component {
                     </style>
 
                 <div className="playgrounds_content">
-                    <image_url style={{ width: '500px' }} src={this.state.playground.image_url} />
+                    <h2>{`Image:<image_url style={{ width: '500px' }} 
+                    src={this.state.playground.image_url}/>`}</h2>
                     <h3>{`Address: ${this.state.playground.address}`}</h3>
                     <h3>{`City: ${this.state.playground.city}`}</h3>
                     <h2>{`State: ${this.state.playground.state}`}</h2>
                     <h2>{`Zip: ${this.state.playground.zip}`}</h2>
                     <h2>{`Reviews: ${this.state.playground.reviews}`}</h2>
-                    {/* {this.renderPlayground()} */}
+                   
                 </div>
 
                 <div className="top-left">

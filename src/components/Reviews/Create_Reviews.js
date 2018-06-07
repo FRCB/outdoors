@@ -27,7 +27,7 @@ export default class CreateReviews extends Component{
             <section>
             <div>
                 <input className="create_input"
-                placeholder=" Leave a review about the playgounds you visit"
+                placeholder="Leave a review about the playgounds you visit"
                 value={ text }
                 onChange={ ( e ) => this.updateText( e.target.value)}/>
             </div>

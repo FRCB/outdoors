@@ -114,6 +114,6 @@ class MapWrapper extends Component{
 }
 
 export default GoogleApiWrapper({
-  
+
 })(MapWrapper)
 

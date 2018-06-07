@@ -15,14 +15,16 @@ module.exports = {
         const { params }= req;
 
         dbInstance.read_review([ params.id ])
-        .then( playground => res.status(200).send(playground))
+        .then( playground => res.status(200)
+        .send(playground))
         .catch( () => res.status(500).send());
     },
     getReviews: (req, res, next ) => {
         const dbInstance = req.app.get('db');
 
         dbInstance.read_reviews()
-        .then( reviews => res.status(200).send( reviews) )
+        .then( reviews => res.status(200)
+        .send( reviews) )
         .catch( () => res.status(500).send() );
     },
     updateReview: (req, res, next) => {
@@ -40,8 +42,8 @@ module.exports = {
             content: content || review.content,
             
         };
-
-        dbInstance.update_review([params.id, query.desc ])
+       
+        dbInstance.update_review([ playground_id, reviewer_name, rating, content])
         .then( () => res.status(200).send())
         .catch( () => res.status(500).send());
     },
