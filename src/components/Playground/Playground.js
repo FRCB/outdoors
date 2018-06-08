@@ -83,7 +83,7 @@ class Playground extends Component {
                     <h2>{`Zip: ${this.state.playground.zip}`}</h2>
                     <h2>{`Reviews: ${this.state.playground.reviews}`}</h2>
                 <Link to='/reviews'>
-                <Button onClick={this.handleAdd}>Add a Review </Button>
+                <button onClick={this.handleAdd}>Add a Review </button>
                 </Link>
                 </div>
 

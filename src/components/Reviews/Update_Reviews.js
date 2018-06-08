@@ -15,13 +15,13 @@ export default class Update extends Component {
     }
     updateReview() {
         const { text } = this.state;
-        const { id, updateReviewFn, hideEdit } = this.props;
+        const { id, updateReviewFn } = this.props;
 
-        updateReviewFn(id, text);
-        hideEdit();
+        updateReviewFn(id,);
+       
     }
     render() {
-        const { hideEdit } = this.props;
+        
         const { text } = this.state;
 
         return (
@@ -37,13 +37,6 @@ export default class Update extends Component {
                         Update
     </button>
 
-                    <button id="Edit_controls_cancel"
-                        className="Edit_control-btn"
-                        onClick={hideEdit}>
-
-                        Cancel
-                    
-    </button>
                 </div>
             </section>
         )

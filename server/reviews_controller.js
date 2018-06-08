@@ -43,7 +43,7 @@ module.exports = {
             
         };
        
-        dbInstance.update_review([ playground_id, reviewer_name, rating, content])
+        dbInstance.update_review([ playground_id, name, review ])
         .then( () => res.status(200).send())
         .catch( () => res.status(500).send());
     },
@@ -51,9 +51,9 @@ module.exports = {
         const dbInstance = req.app.get('db');
         let { params} = req;
 
-        // review.forEach((review, index) => {
-        //     review.splice(index, 1)
-        // })
+        review.forEach((review, index) => {
+            review.splice(index, 1)
+        })
 
         dbInstance.delete_review([params.id])
         .then( () => res.status(200).send(reviews))

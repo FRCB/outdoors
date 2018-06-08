@@ -40,7 +40,7 @@ class Welcome extends Component {
         return (
             <div>
                 <body>
-                    <div className="header">
+                <div className="w3-container w3-center w3-animate-zoom">
                         <Title>Let's go Outdoors!</Title>
                     </div>
                     <section className="content">

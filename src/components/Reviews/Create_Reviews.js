@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class CreateReviews extends Component{
+export default class CreateReviews extends Component {
     constructor(){
         super();
 
@@ -10,15 +10,12 @@ export default class CreateReviews extends Component{
 
         this.createReview = this.createReview.bind(this);
     }
-    updateText( text ){
-        this.setState( { text });
+    updateText( event ){
+        this.setState({ text: event.target.value });
     }
-    createReview(){
-        const{ text } = this.state;
-        const{  createReviewFn }=this.props;
-
-        createReviewFn( text );
-        this.setsState({ text: ''})
+    createReview(event){
+        event.preventDefault();
+        this.setState({ text: ''})
     }
     render(){
         const{ text }= this.state;
@@ -27,7 +24,7 @@ export default class CreateReviews extends Component{
             <section>
             <div>
                 <input className="create_input"
-                placeholder="Leave a review about the playgounds you visit"
+                placeholder="Leave a review about the playgrounds you visit"
                 value={ text }
                 onChange={ ( e ) => this.updateText( e.target.value)}/>
             </div>
