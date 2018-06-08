@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Pacifico');
-.header{
+/* .header{
     display: flex;
     justify-content:flex-start;
     align-content: stretch;
@@ -9,13 +9,12 @@
     height: 20vh;
     padding-left: 25%;
     padding-right: 25%;
-    } 
-   .info {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    text-align: center;
+    }  */
+   .card {
+    margin: 20px;
+    padding: 20px;
+    
    }
-   .info ol li {
+   .li {
     display: inline; 
    }

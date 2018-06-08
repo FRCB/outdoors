@@ -44,7 +44,9 @@ class Welcome extends Component {
                         <Title>Let's go Outdoors!</Title>
                     </div>
                     <section className="content">
+                        <div className="tree_img">
                         <img src="http://savetreessaveearth.com/wp-content/uploads/2015/06/savetreesaveearth-img1.gif" alt="Tree" />
+                        </div>
                     </section>
                     <div className="footer">
                         <a href={process.env.REACT_APP_LOGIN}> <button className="myButton" href="#"

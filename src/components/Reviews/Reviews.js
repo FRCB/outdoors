@@ -34,10 +34,9 @@ class Reviews extends Component {
             this.setState({ reviews: results.data });
         }).catch((err) => console.log('could not get the reviews', err));
     }
-    createReview(text) {
-        axios.post('/api/reviews', { text }).then(results => {
-            this.setState({ reviews: results.data });
-        }).catch((err) => console.log('could not create a review', err));
+    createReview([ playground_id, reviewer_name, rating, content]) {
+        axios.post('/api/reviews', {playground_id},{reviewer_name}, {rating},{content}).then(results => { this.setState({playground_id: results.data}),({ reviewer_name: results.data }),({ rating: results.data }), ({content: results.data })
+    }).catch((err) => console.log('could not create a review', err));
     }
     updateReview([ playground_id, reviewer_name, rating, content]) {
         axios.put('/api/reviews?id=${ id }', {playground_id},{reviewer_name}, {rating},{content}).then(results => 

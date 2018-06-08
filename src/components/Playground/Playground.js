@@ -32,12 +32,17 @@ class Playground extends Component {
             previousPage: '',
             favorites: '',
             information: '',
+            input: '',
             playground: {}
         };
+        this.handleAdd = this.handleAdd.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handlePreviousPage = this.handlePreviousPage.bind(this);
         this.handleAddFavorites = this.handleAddFavorites.bind(this);
         this.handleInformation = this.handleInformation.bind(this);
+    }
+    handleAdd(input){
+        this.setState({input:''})
     }
     handleSearch(value) {
         this.setState({ search: value })
@@ -70,14 +75,16 @@ class Playground extends Component {
                     </style>
 
                 <div className="playgrounds_content">
-                    <h2>{`Image:<image_url style={{ width: '500px' }} 
-                    src={this.state.playground.image_url}/>`}</h2>
-                    <h3>{`Address: ${this.state.playground.address}`}</h3>
-                    <h3>{`City: ${this.state.playground.city}`}</h3>
+
+                    <img style={{width:'500px'}} src={this.state.playground.image_url}/>
+                    <h2>{`Address: ${this.state.playground.address}`}</h2>
+                    <h2>{`City: ${this.state.playground.city}`}</h2>
                     <h2>{`State: ${this.state.playground.state}`}</h2>
                     <h2>{`Zip: ${this.state.playground.zip}`}</h2>
                     <h2>{`Reviews: ${this.state.playground.reviews}`}</h2>
-                   
+                <Link to='/reviews'>
+                <Button onClick={this.handleAdd}>Add a Review </Button>
+                </Link>
                 </div>
 
                 <div className="top-left">
@@ -91,7 +98,7 @@ class Playground extends Component {
                 <div className="bottom">
                     <Link to='/favorites'> <FavoriteIcon id="Favorite_icon"></FavoriteIcon></Link>
                     <Link to='/facts'> <InformationIcon id="Information_icon"></InformationIcon></Link>
-
+            
                 </div>
             </div>
 

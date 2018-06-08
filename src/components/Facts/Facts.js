@@ -29,13 +29,14 @@ class Facts extends Component {
     render(){
         return(
             <div>
+                <body>
              <div className="header">
             <Title> Benefits of Playing Outside:</Title>
                 <style>
                     @import url('https://fonts.googleapis.com/css?family=Delius');
                     </style>
                 </div>
-                <div className="info">
+                <div className="card">
                 <Subtitle>
                     <ol>
                         <li> Research as far back as 1885 proves that learners fare better when breaks are incorporated into their efforts. </li>
@@ -54,6 +55,7 @@ class Facts extends Component {
                     </Subtitle>
                     </div>
                     <p>For more information please visit: https://www.aaastateofplay.com/77-reasons-kids-need-playgrounds/</p>
+                    </body>
                     </div>
         )
     }
