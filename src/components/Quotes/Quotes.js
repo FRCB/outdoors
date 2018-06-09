@@ -11,7 +11,7 @@ export default class Quote extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`https://andruxnet-random-famous-quotes.p.mashape.com/`, { headers: { "X-Mashape-Key": "YRsvfxircSmsh4Wjz4NWO3D6t5brp1y79cNjsnNrCuQszEem60" } }).then(res => {
+        axios.get(`'https://quotes.p.mashape.com/?category=nature'`, { headers: { "X-Mashape-Key":  'AyzqBlAdDCmshMqwSX4JzxYSPln4p1B4hu5jsn1UsxnOnCIz1p' } }).then(res => {
             this.setState({ quote: res.data[0].quote, author: res.data[0].author })
         })
     }

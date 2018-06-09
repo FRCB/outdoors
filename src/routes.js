@@ -11,6 +11,7 @@ import Facts from './components/Facts/Facts';
 import Reviews from './components/Reviews/Reviews';
 import Playgrounds from './components/Playground/Playgrounds';
 import PlaygroundsMap from './components/Playground/PlaygroundsMap';
+import Quotes from './components/Quotes/Quotes';
 
 export default (
     <Switch>
@@ -25,6 +26,7 @@ export default (
         <Route path='/facts' component={Facts}/>
         <Route path='/reviews' component={ Reviews }/>
         <Route path='/playground/:id'component={ Playground } />
+        <Route path='/quotes' component={Quotes}/>
 
     </Switch>
 )
